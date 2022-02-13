@@ -15,9 +15,9 @@ mongoose
   .then(() => console.log("database connected"))
   .catch((err) => console.log(err));
 
-// app.get("/", (req, res) => {
-//   res.send("hello world");
-// });
+app.get("/", (req, res) => {
+  res.send("hello world");
+});
 
 app.use("/todos", todoHandler);
 
