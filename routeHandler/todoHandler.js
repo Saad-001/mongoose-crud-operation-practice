@@ -101,9 +101,24 @@ router.delete("/:id", async (req, res) => {
         error: "there was a server side error",
       });
     } else {
-      res.status(200).json({
-        message: "todo was deleted successfully",
+      Todo.find({}, (err, data) => {
+        if (err) {
+          res.status(500).json({
+            error: "there was a server side error",
+          });
+        } else {
+          res.status(200).json({
+            result: data,
+            message:
+              "selected todo has deleted and the remain todos are represented",
+          });
+          console.log(data);
+        }
       });
+      // res.status(200).json({
+      //   result :
+      //   message: "todo was deleted successfully",
+      // });
     }
   }).clone();
 });
